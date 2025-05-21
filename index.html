@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ホームラウンド</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      background-color: #fff;
+      color: #111;
+      line-height: 1.6;
+    }
+
+    section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 20px;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .image {
+      max-width: 45%;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .text {
+      margin-top: 40px;
+      font-size: 1.8rem;
+      text-align: center;
+      max-width: 600px;
+      line-height: 1.8;
+    }
+
+    @media (min-width: 768px) {
+      section {
+        flex-direction: row;
+        gap: 60px;
+      }
+      section:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+      .text {
+        text-align: left;
+        margin-top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section>
+    <img class="image" src="kakusin.png" alt="Tech Image" />
+    <div class="text">
+      <h2>革新的な作品を</h2>
+      <p>あなたに素晴らしい体験を、次世代へ。　　　シンプルさとパワーが融合した究極のゲーム</p>
+    </div>
+  </section>
+
+  <section>
+    <img class="image" src="utukusi.png" alt="Minimal Image" />
+    <div class="text">
+      <h2>美しさを追い求める</h2>
+      <p>どの角度から見てもクリーンな水。　　　　　静けさと明るさが調和する</p>
+    </div>
+  </section>
+
+  <section>
+    <img class="image" src="build.png" alt="Future Image" />
+    <div class="text">
+      <h2>近未来を、この手に</h2>
+      <p>直感的な操作で、思考のスピードに追いつくテクノロジー。次の一歩はここから</p>
+    </div>
+  </section>
+
+    <section>
+    <img class="image" src="night.png" alt="Tech Image" />
+    <div class="text">
+      <h2>もう一度あの感動を</h2>
+      <p>夜という存在感を、神秘的を表現した、　　　　現実を再現したゲームに</p>
+    </div>
+  </section>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+
+<footer style="background-color: #f9f9f9; padding: 60px 20px; text-align: center;">
+
+  <h2 style="font-size: 2rem; margin-bottom: 30px;">気になる世界へ飛び込もう</h2>
+
+  <div style="display: flex; flex-direction: column; gap: 20px; align-items: center; justify-content: center; max-width: 500px; margin: 0 auto;">
+    <a href="https://あなたのオリジナルショップURL" target="_blank"
+       style="padding: 15px 30px; background-color: black; color: white; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: background 0.3s;">
+       オリジナルショップ
+    </a>
+    
+    <a href="https://nemoyworld1004.github.io/Y-wworld/" target="_blank"
+       style="padding: 15px 30px; background-color: black; color: white; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: background 0.3s;">
+       ゲームをダウンロード
+    </a>
+  </div>
+
+  <p style="margin-top: 50px; font-size: 0.9rem; color: #666;">© @Nemo Yword</p>
+
+</footer>
+
+</body>
+</html>
